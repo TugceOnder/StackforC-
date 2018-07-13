@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Stack{
+private :
+int top;
+int Data [100];
+public :
+Stack(){
+ top=-1;}
+
+void push (int x){ top++; Data[top]=x;}
+int pop(){top--; return Data [top+1];}
+int peek(){ return Data [top]; }
+bool isempty(){return top=-1;}
+
+friend ostream& operator << (ostream& os, Stack s);
+}s1,s2;
+
+ostream& operator << (ostream& os, Stack s){
+  os << " [ ";
+  for (int i =0;i<=s.top;i++)
+  if (i<s.top) os << s.Data[i]<<" ,";
+  else os << s.Data [i] << " ]";
+  //return 0;
+}
+int fact (int N){
+  cout << "FACT : N "<< N << endl;
+  if (N<2) return 1;
+  else N*fact(N-1);
+}
+
+int FactStack( Stack& s){
+  /*while (true){
+     int n = s.peek();
+   if(n<2){
+     s.pop();
+     s.pop();
+     s.push(1);
+  }
+       else {
+       s.push(-1);
+       s.push(n-1);
+     }
+} */
+
+  
+}
+int main() {
+  s1.push(5);
+  cout << s1;
+  s1.push(10);
+  cout <<s1;
+cout <<"\n";
+  cout <<" Fact (5) = " << fact(5) << endl;
+  s2.push(-1);
+  s2.push(5);
+  cout << "\nFact Stack (5) = " << FactStack(s2) << endl;
+}
